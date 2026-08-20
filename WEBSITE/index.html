@@ -185,7 +185,30 @@
     font-size:0.92rem;
   }
 
-  /* EMAIL CAPTURE */
+  /* LAB SECTION (coming soon teasers) */
+  .lab-note{
+    color:var(--gray);
+    margin-top:2.2rem;
+    font-size:0.92rem;
+  }
+
+  /* ROADMAP TAGS (longer still-in-development list) */
+  .roadmap-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7rem;
+  }
+  .roadmap-tag{
+    display:inline-block;
+    padding:0.55rem 1rem;
+    background:var(--charcoal);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:999px;
+    font-size:0.82rem;
+    color:var(--gray);
+  }
+
+  /* SIGNUP / FOUNDING MEMBERS FORM */
   .capture{
     background:var(--charcoal);
     border-radius:4px;
@@ -205,37 +228,68 @@
     margin:0 auto 0.6rem;
     max-width:600px;
   }
-  .capture p{
+  .capture p.capture-sub{
     color:var(--gray);
     max-width:480px;
     margin:0 auto 2.2rem;
   }
 
-  /* MailerLite embed target */
-  #mlb2-signup{
-    max-width:480px;
+  .founder-form{
+    max-width:560px;
     margin:0 auto;
+    text-align:left;
+    position:relative;
+    z-index:1;
   }
-  .capture-fallback-form{
+  .founder-form .field{
+    margin-bottom:16px;
+  }
+  .founder-form .field-row{
     display:flex;
-    gap:0.6rem;
-    max-width:440px;
-    margin:0 auto;
+    gap:14px;
     flex-wrap:wrap;
-    justify-content:center;
   }
-  .capture-fallback-form input[type="email"]{
+  .founder-form .field-row .field{
     flex:1;
-    min-width:220px;
-    padding:0.9rem 1.1rem;
-    background:var(--black);
-    border:1px solid rgba(255,255,255,0.15);
-    color:var(--white);
-    border-radius:2px;
-    font-size:0.95rem;
+    min-width:200px;
   }
-  .capture-fallback-form button{
-    padding:0.9rem 1.6rem;
+  .founder-form label{
+    display:block;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:7px;
+    color:var(--gray);
+  }
+  .founder-form input,
+  .founder-form textarea{
+    width:100%;
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:2px;
+    padding:0.8rem 0.9rem;
+    font-size:13.5px;
+    font-family:inherit;
+    background:var(--black);
+    color:var(--white);
+  }
+  .founder-form input::placeholder,
+  .founder-form textarea::placeholder{
+    color:#6b665f;
+  }
+  .founder-form textarea{
+    min-height:80px;
+    resize:vertical;
+  }
+  .founder-form .field-error{
+    color:var(--orange);
+    font-size:11.5px;
+    margin-top:5px;
+    display:none;
+  }
+  .founder-form button{
+    width:100%;
+    padding:0.95rem 1.6rem;
     background:var(--orange);
     color:var(--black);
     border:none;
@@ -246,13 +300,21 @@
     border-radius:2px;
     cursor:pointer;
     transition:background 0.2s;
+    margin-top:6px;
   }
-  .capture-fallback-form button:hover{background:#ff8a4d;}
+  .founder-form button:hover{background:#ff8a4d;}
   .form-note{
     margin-top:1rem;
     font-size:0.78rem;
     color:var(--gray);
     opacity:0.7;
+    text-align:center;
+  }
+  .founder-success{
+    display:none;
+    color:var(--white);
+    text-align:center;
+    padding:1rem 0;
   }
 
   footer{
@@ -314,15 +376,6 @@
   .modal-btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);}
   .modal-btn-outline:hover{border-color:var(--orange);color:var(--orange);}
 </style>
-<!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2581732');
-</script>
-<!-- End MailerLite Universal -->
 </head>
 <body>
 
@@ -331,6 +384,8 @@
   <ul>
     <li><a href="#offer">What We Do</a></li>
     <li><a href="#tools">Tools</a></li>
+    <li><a href="#lab">In The Lab</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#signup">Join the List</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -343,7 +398,7 @@
   <div class="hero-content">
     <span class="eyebrow">Coming Soon</span>
     <h1>BIM at the <em>press</em><br>of a button.</h1>
-    <p class="hero-sub">Field-ready BIM tools and layout services for contractors who don't have an engineering department — built for framers and small-to-mid-size crews, not just MEP.</p>
+    <p class="hero-sub">Built for MEP teams who see where BIM is headed, not just where it's been. We build for the field problems nobody's solved yet &mdash; because the best solutions haven't been invented.</p>
     <button class="signal" id="scrollToTools" type="button" aria-label="See the live tools">
       <div class="signal-btn"></div>
       <div class="signal-line"></div>
@@ -360,22 +415,17 @@
       <h3>PDF to Field-Ready Points</h3>
       <p>Upload a blueprint. Get back layout points your crew can actually use on a total station — no BIM department required.</p>
     </div>
-    <div class="offer-card">
+    <a class="offer-card" href="https://www.youtube.com/@BIM-Press" target="_blank" rel="noopener">
       <span class="num">02</span>
-      <h3>Layout Equipment Training</h3>
-      <p>Practical, no-nonsense training so your team can run layout equipment confidently, not just watch someone else do it.</p>
-    </div>
-    <div class="offer-card">
-      <span class="num">03</span>
-      <h3>Done-For-You Layout Service</h3>
-      <p>Don't have the time or crew to spare? We'll handle the layout directly, on your schedule.</p>
-    </div>
+      <h3>Training &amp; Remote Consulting</h3>
+      <p>Practical, no-nonsense training and remote consulting so your team can run layout equipment confidently, not just watch someone else do it. Watch training videos and BIM content on our <span style="color:var(--orange);">YouTube channel &rarr;</span></p>
+    </a>
   </div>
 </section>
 
 <section id="tools">
   <span class="section-label">Live Tools</span>
-  <h2>Two tools you can use right now, free.</h2>
+  <h2>Tools you can use right now, free.</h2>
   <div class="offer-grid">
     <a class="offer-card" href="csv-converter.html" target="_blank" rel="noopener">
       <span class="num">Live</span>
@@ -387,19 +437,117 @@
       <h3>Field Calculator</h3>
       <p>Feet-and-inches ⇄ decimal feet converter, US survey foot conversion, and a quick calculator built for the field.</p>
     </a>
+    <a class="offer-card" href="https://qr-point.netlify.app/" target="_blank" rel="noopener">
+      <span class="num">Live</span>
+      <h3>QR Point</h3>
+      <p>Scan a QR code on a jobsite point and instantly pull up its coordinates, description, and layer data.</p>
+    </a>
+    <a class="offer-card" href="https://coordx-press.netlify.app/" target="_blank" rel="noopener">
+      <span class="num">Live</span>
+      <h3>CoordX</h3>
+      <p>Upload a blueprint PDF, calibrate the scale, place your points, and export a Trimble-ready CSV.</p>
+    </a>
+  </div>
+</section>
+
+<section id="lab">
+  <span class="section-label">In The Lab</span>
+  <h2>What we're building next.</h2>
+  <div class="offer-grid">
+    <div class="offer-card">
+      <span class="num">&rarr;</span>
+      <h3>AI-Assisted MEP Coordination</h3>
+      <p>Catching clashes before they cost you time in the field.</p>
+    </div>
+    <div class="offer-card">
+      <span class="num">&rarr;</span>
+      <h3>AI-Assisted Revit &amp; AutoCAD</h3>
+      <p>Less clicking, more building — workflows that move at field speed.</p>
+    </div>
+    <div class="offer-card">
+      <span class="num">&rarr;</span>
+      <h3>AI-Assisted Navisworks</h3>
+      <p>Smarter model reviews, built for how MEP teams actually work.</p>
+    </div>
+    <div class="offer-card">
+      <span class="num">&rarr;</span>
+      <h3>Trade-Specific AI Tools</h3>
+      <p>Built around how your trade actually works, not a generic workflow.</p>
+    </div>
+    <div class="offer-card">
+      <span class="num">&rarr;</span>
+      <h3>Brand-Specific Equipment Support</h3>
+      <p>Built to work with the systems you already run &mdash; Trimble, Sokkia, Topcon, and Leica GNSS and robotic total stations.</p>
+    </div>
+  </div>
+  <p class="lab-note">None of this exists yet. All of it is coming. Tell us what you need and we'll build it.</p>
+</section>
+
+<section id="roadmap">
+  <span class="section-label">Still In Development</span>
+  <h2>The bigger roadmap.</h2>
+  <div class="roadmap-tags">
+    <span class="roadmap-tag">AI-Assisted PDF Review</span>
+    <span class="roadmap-tag">PDF Drawing Inspection</span>
+    <span class="roadmap-tag">PDF Drawing Extract</span>
+    <span class="roadmap-tag">Automated Point Placement</span>
+    <span class="roadmap-tag">Automated Takeoff &amp; Spreadsheet</span>
+    <span class="roadmap-tag">Automated Coordinate Conversion</span>
+    <span class="roadmap-tag">Automated Markup</span>
+    <span class="roadmap-tag">Automated PDF Compare</span>
+    <span class="roadmap-tag">Auto Specification Review</span>
+    <span class="roadmap-tag">Auto Specification Cross-Reference</span>
+    <span class="roadmap-tag">Auto Specification Audit</span>
+    <span class="roadmap-tag">Auto 3D-Model-to-2D Compare</span>
+    <span class="roadmap-tag">Auto 3D Populate from 2D Sheet</span>
+    <span class="roadmap-tag">Auto 3D Dimensioner</span>
   </div>
 </section>
 
 <section id="signup">
   <div class="capture">
-    <span class="section-label">Get On The List</span>
+    <span class="section-label">Join the Founding Members</span>
     <h2>Be first in line when BIM-Press goes live.</h2>
-    <p>No spam, just a heads-up when tools, training, and services are ready — plus early access pricing.</p>
+    <p class="capture-sub">Help us build the tools your team actually needs, and lock in founder pricing when we launch paid features.</p>
 
-    <!-- MailerLite embedded form -->
-    <div id="mlb2-signup">
-      <div class="ml-embedded" data-form="4AhCMH"></div>
-    </div>
+    <form class="founder-form" id="founderForm">
+      <div class="field-row">
+        <div class="field">
+          <label for="founderName">Name</label>
+          <input type="text" id="founderName" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="founderEmail">Email</label>
+          <input type="email" id="founderEmail" placeholder="you@example.com">
+          <div class="field-error" id="founderEmailError">Enter a valid email so we can reply.</div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="founderContact">Phone or preferred contact</label>
+          <input type="text" id="founderContact" placeholder="Optional">
+        </div>
+        <div class="field">
+          <label for="founderCompany">Company</label>
+          <input type="text" id="founderCompany" placeholder="Optional">
+        </div>
+      </div>
+      <div class="field">
+        <label for="founderPain">What's slowing down your BIM workflow right now?</label>
+        <textarea id="founderPain" placeholder="Tell us the biggest headache in your day-to-day"></textarea>
+      </div>
+      <div class="field">
+        <label for="founderBuild">What would you want to see us build first?</label>
+        <textarea id="founderBuild" placeholder="Any tool, feature, or fix on your wishlist"></textarea>
+      </div>
+      <div class="field">
+        <label for="founderNote">Anything else you'd like us to know?</label>
+        <textarea id="founderNote" placeholder="Optional"></textarea>
+      </div>
+      <button type="button" id="founderSubmit">Join as a Founding Member</button>
+      <p class="form-note">No spam, just a heads-up when tools, training, and services are ready — plus early access pricing.</p>
+      <p class="founder-success" id="founderSuccess">Thanks — your email app should be opening now with everything filled in. Just hit send.</p>
+    </form>
   </div>
 </section>
 
@@ -407,6 +555,8 @@
   <div class="logo-mark">BIM<span>-</span>PRESS</div>
   <div>© 2026 BIM-Press. Built for the trades.</div>
   <div class="footer-links">
+    <a class="contact-link" href="https://totalstationtech.com" target="_blank" rel="noopener">TotalStationTech.com</a>
+    <a class="contact-link" href="https://www.youtube.com/@TotalStationTech" target="_blank" rel="noopener">TotalStationTech on YouTube</a>
     <a class="contact-link" id="contactLink" href="mailto:bimpresscad@gmail.com">bimpresscad@gmail.com</a>
     <a class="contact-link" id="errorLink" href="mailto:bimpresscad@gmail.com?subject=Error%20report%20%E2%80%94%20bim-press.com">Report an Error</a>
   </div>
@@ -584,6 +734,44 @@
     goToMailto(buildMailto(TO_EMAIL, subject, body));
     closeModal("#errorOverlay");
   });
+
+  // ---- Founding Members form ----
+  var founderSubmit = $("#founderSubmit");
+  if (founderSubmit){
+    founderSubmit.addEventListener("click", function(){
+      var name = $("#founderName").value.trim();
+      var email = $("#founderEmail").value.trim();
+      var contact = $("#founderContact").value.trim();
+      var company = $("#founderCompany").value.trim();
+      var pain = $("#founderPain").value.trim();
+      var build = $("#founderBuild").value.trim();
+      var note = $("#founderNote").value.trim();
+      var ok = true;
+
+      $("#founderEmailError").style.display = "none";
+      if (!email || !isValidEmail(email)){ $("#founderEmailError").style.display = "block"; ok = false; }
+      if (!ok) return;
+
+      var subject = "Founding Member signup — bim-press.com" + (name ? " — " + name : "");
+      var body = [
+        "Name: " + (name || "(not provided)"),
+        "Email: " + email,
+        "Phone / preferred contact: " + (contact || "(not provided)"),
+        "Company: " + (company || "(not provided)"),
+        "",
+        "What's slowing down their BIM workflow:",
+        pain || "(not provided)",
+        "",
+        "What they'd want built first:",
+        build || "(not provided)",
+        "",
+        "Anything else:",
+        note || "(not provided)"
+      ];
+      goToMailto(buildMailto(TO_EMAIL, subject, body));
+      $("#founderSuccess").style.display = "block";
+    });
+  }
 
   document.addEventListener("keydown", function(e){
     if (e.key === "Escape"){ closeModal("#contactOverlay"); closeModal("#errorOverlay"); }
