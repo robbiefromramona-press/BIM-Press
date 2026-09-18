@@ -1,0 +1,42 @@
+/* Shared look for the legal pages (terms.html, privacy.html, disclaimer.html).
+   Same colors and fonts as the homepage. */
+:root{
+  --bg:#101011;
+  --panel:#161616;
+  --line:rgba(255,255,255,0.08);
+  --orange:#ff6b1a;
+  --white:#f5f3ef;
+  --gray:#b3aea6;
+  --head:'Barlow Semi Condensed', 'Arial Narrow', Arial, sans-serif;
+  --body:'Barlow', 'Helvetica Neue', Arial, sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{background:var(--bg); color:var(--white); font-family:var(--body); line-height:1.65;}
+a{color:var(--orange);}
+
+.legal-header{
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px clamp(16px, 4vw, 48px);
+  background:rgba(16,16,17,0.96); border-bottom:1px solid var(--line);
+}
+.legal-header .logo{font-family:var(--head); font-weight:800; font-size:1.7rem; color:var(--white); text-decoration:none;}
+.legal-header .logo span{color:var(--orange);}
+.legal-header .back{font-family:var(--head); font-weight:700; letter-spacing:0.05em; text-transform:uppercase; text-decoration:none; font-size:0.9rem;}
+
+main{max-width:780px; margin:0 auto; padding:48px clamp(16px, 4vw, 32px) 64px;}
+h1{font-family:var(--head); font-weight:800; font-size:clamp(2.2rem, 5vw, 3rem); text-transform:uppercase; line-height:1;}
+.updated{color:var(--gray); font-size:0.9rem; margin:10px 0 28px; padding-bottom:22px; border-bottom:1px solid var(--line);}
+h2{font-family:var(--head); font-weight:700; font-size:1.35rem; margin:30px 0 8px; color:var(--orange);}
+p, li{color:#e4e0da; font-size:1rem;}
+p + p{margin-top:12px;}
+ul{margin:8px 0 0 22px;}
+li + li{margin-top:6px;}
+
+.legal-footer{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px 22px;
+  padding:20px 16px 26px; border-top:1px solid rgba(255,107,26,0.35);
+  color:var(--gray); font-size:0.85rem;
+}
+.legal-footer a{color:var(--gray); text-decoration:none;}
+.legal-footer a:hover, .legal-footer a[aria-current="page"]{color:var(--orange);}

@@ -1,0 +1,98 @@
+BIM-Press.com homepage rebuild: session summary, 2026-09-18
+=============================================================
+
+STATUS: Built and tested locally. NOT committed or pushed yet (waiting on your OK).
+
+WHAT CHANGED
+------------
+The homepage was rebuilt to match the reference mockups in _reference/
+(landscape = desktop, portrait = tablet/phone).
+
+1. Header (stays pinned to the top on scroll)
+   - Hamburger (3-bar) icon, BIM-PRESS logo + "BIM - at the Press of a button!",
+     search box, SIGN IN, JOIN.
+   - Wide screens also show an inline nav (Apps & Tools / Games / Videos / Contact /
+     TotalStationTech). RESOURCES and ABOUT from the mockup were left out because
+     there are no pages for them yet.
+   - Phones: search folds into a magnifier icon that opens a search row.
+
+2. Hamburger dropdown menu: Apps, Games & Training, Videos, Contact, TotalStationTech.com
+   - Apps and Games & Training jump to their sections, and each lists its apps
+     as direct links.
+   - Videos opens a popup with videos/bim_press_intro.mp4 (no autoplay; closing pauses it).
+   - Contact opens the existing contact email form.
+
+3. Hero: "BIM MADE PRACTICAL", tagline, EXPLORE APPS & TOOLS button, LEARN/BUILD/SHARE/GROW
+   icons, PEOPLE / TOOLS / KNOWLEDGE / A BETTER / BUILT WORLD list, and the handwritten
+   "Build Smarter Together". The photo is your _reference/bim-press-homepage-hero-only.png,
+   compressed to WebP (193 KB desktop, 79 KB phone) plus a JPG fallback.
+
+4. Apps and Tools: QRPoint, CoordXY, PDF-Inspect, P-DXF cards with LEARN MORE buttons.
+   VIEW ALL TOOLS shows a second row with CSV Converter and Field Calculator.
+
+5. Games and Training: Stakeout and TriBrach cards. EXPLORE TRAINING goes to the
+   BIM-Press YouTube channel.
+
+6. Footer: tagline "Better models. Brighter people. A more connected built world.",
+   YouTube icon, "At the press of a button.", then a row with "(c) 2026 Any-Press LLC",
+   Terms of Service, Privacy Policy, Disclaimer, email/contact, Report an Error,
+   and TotalStationTech.com.
+
+7. New legal pages: generic small-business placeholder text. They say so in an HTML
+   comment at the top of each file, and [State] in terms.html still needs filling in.
+
+8. JOIN opens the old Founding Member form (same email-app behavior as before, now in a popup).
+   SIGN IN shows a "Member sign-in is coming soon" note. No account system, Netlify signup
+   form, or Stripe logic was built or touched.
+
+All icons are drawn in code (SVG), so they stay sharp at any size and no extra PNGs are needed.
+
+WHERE EACH LINK POINTS (every one returned HTTP 200 on 2026-09-18)
+-------------------------------------------------------------------
+QRPoint          https://qr-point.netlify.app/            (was on old BIM-Press page)
+CoordXY          https://coordx-press.netlify.app/        (was on old BIM-Press page)
+CSV Converter    https://press-csv-converter.netlify.app  (was on old BIM-Press page)
+Field Calculator https://tst-calc.netlify.app             (was on old BIM-Press page)
+PDF-Inspect      https://pdf-inspect.netlify.app/         (taken from totalstationtech.com, per your OK)
+Stakeout         https://stake-out.netlify.app/           (taken from totalstationtech.com, per your OK)
+TriBrach         https://tribrachgame.netlify.app/        (taken from totalstationtech.com, per your OK)
+P-DXF            no URL yet: shows a disabled "Coming Soon" button
+YouTube          https://youtube.com/@bim-press?si=Rsd0I0o1_gmDAEZE
+TotalStationTech https://totalstationtech.com
+Email forms      bimpresscad@gmail.com (unchanged)
+
+REMOVED FROM THE HOMEPAGE (they aren't in the mockup)
+------------------------------------------------------
+"The Offer", "In The Lab", and "Roadmap" sections, plus the old video-background hero.
+They're still in git history if you want any of that copy back.
+
+FILES TOUCHED (all under WEBSITE/)
+----------------------------------
+  index.html                 rebuilt
+  terms.html                 new
+  privacy.html               new
+  disclaimer.html            new
+  assets/legal.css           new (shared styling for the 3 legal pages)
+  assets/hero/bp-hero.webp   new (1672px)
+  assets/hero/bp-hero-900.webp new (phones)
+  assets/hero/bp-hero.jpg    new (fallback)
+Not touched: calculator.html, csv-converter.html, videos/, images/.
+_reference/ and Public/ are still untracked and won't be committed.
+
+Also, outside this repo: added a "bim-press-site" preview entry (port 8781) to
+C:\Users\robbi\.claude\sessions\.claude\launch.json, next to the existing tst-site entry.
+
+Other: local main was one commit behind GitHub (8d4af70); fast-forwarded before starting.
+
+TESTED
+------
+Desktop 1672px, tablet 1024px, phone 375px: no sideways scrolling, no overlapping text.
+Hamburger open/close (click outside + Escape), search, VIEW ALL TOOLS, JOIN, SIGN IN note,
+video popup, contact/error popups, and founding-form email all worked.
+
+STILL OPEN
+----------
+- Fill in [State] in terms.html and review all three legal pages once the LLC is formed.
+- Instagram / LinkedIn icons from the mockup were left out (no URLs yet). There's a comment
+  in the footer showing where to add them.
+- P-DXF: swap the "Coming Soon" span for a link when it goes live (comment marks the spot).
