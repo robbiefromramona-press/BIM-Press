@@ -44,5 +44,15 @@ Local server on the `WEBSITE` folder:
 
 ## Still to do
 
-- Fire-Press footer link: waiting on fire-press.com going live.
-- Push to GitHub: waiting on Robbie's OK.
+- Fire-Press footer link: skipped for now at Robbie's request. fire-press.com
+  DNS is correct but its HTTPS certificate had not been issued yet.
+
+## Deployed
+
+Pushed to GitHub on 2026-11-16 at Robbie's request (two commits, plus a
+`.gitattributes` rule that keeps the app files byte-exact). Checked live:
+https://bim-press.com/apps/revit-keys/ returns 200 with no password, the file
+matches the local copy exactly, and the card shows on the home page.
+
+Note: GitHub reports the repo has moved to `robbiefromramona-press/BIM-Press`.
+The old address still works through a redirect.
