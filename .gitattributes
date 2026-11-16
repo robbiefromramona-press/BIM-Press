@@ -1,0 +1,2 @@
+# Keep the Revit Keys app files byte-for-byte as supplied (no line-ending changes).
+WEBSITE/apps/revit-keys/** -text
