@@ -266,6 +266,9 @@
     color:#fff;
   }
   .app-icon svg{width:70%; height:70%;}
+  /* Picture icon (Revit Keys): dark tile so the keycap art reads */
+  .app-icon.pic{background:linear-gradient(145deg, #232325 0%, #111112 100%); box-shadow:0 8px 24px rgba(255,107,26,0.18), inset 0 0 0 1px rgba(255,107,26,0.45);}
+  .app-icon.pic img{width:86%; height:86%; object-fit:contain;}
   .card h3{font-family:var(--head); font-weight:700; font-size:clamp(1.35rem, 1.55vw, 1.6rem); line-height:1.15;}
   .card p{font-size:clamp(0.92rem, 0.98vw, 1rem); color:var(--white); opacity:0.85; line-height:1.4; margin-top:6px;}
   .card-btn{
@@ -557,6 +560,7 @@
           <li><a href="https://qr-point.netlify.app/" target="_blank" rel="noopener">QRPoint</a></li>
           <li><a href="https://coordx-press.netlify.app/" target="_blank" rel="noopener">CoordXY</a></li>
           <li><a href="https://pdf-inspect.netlify.app/" target="_blank" rel="noopener">PDF-Inspect</a></li>
+          <li><a href="apps/revit-keys/" target="_blank" rel="noopener">Revit Keys</a></li>
           <li><span>P-DXF <em>Coming soon</em></span></li>
           <li><a href="https://press-csv-converter.netlify.app" target="_blank" rel="noopener">CSV Converter</a></li>
           <li><a href="https://tst-calc.netlify.app" target="_blank" rel="noopener">Field Calculator</a></li>
@@ -646,6 +650,13 @@
       <h3>PDF-Inspect</h3>
       <p>Inspect, compare and extract data from PDF drawings and plans.</p>
       <a class="card-btn" href="https://pdf-inspect.netlify.app/" target="_blank" rel="noopener" aria-label="Learn more about PDF-Inspect">Learn More <svg><use href="#i-arrow"/></svg></a>
+    </article>
+    <!-- Revit Keys lives on this site (WEBSITE/apps/revit-keys/), not on a separate Netlify site -->
+    <article class="card">
+      <div class="app-icon pic"><img src="assets/apps/revit-keys-icon.png" alt="" width="256" height="256" loading="lazy"></div>
+      <h3>Revit Keys — Shortcut Manager</h3>
+      <p>Edit, de-dupe, and export Revit keyboard shortcuts. Make a printable poster.</p>
+      <a class="card-btn" href="apps/revit-keys/" target="_blank" rel="noopener" aria-label="Learn more about Revit Keys">Learn More <svg><use href="#i-arrow"/></svg></a>
     </article>
     <article class="card">
       <div class="app-icon"><svg aria-hidden="true"><use href="#i-pdxf"/></svg></div>
@@ -939,6 +950,7 @@
     { name: "QRPoint",          keywords: ["qr", "qr point", "qr code"],                     anchor: "#apps" },
     { name: "CoordXY",          keywords: ["coordxy", "coordx", "coordinates", "pdf to csv"], anchor: "#apps" },
     { name: "PDF-Inspect",      keywords: ["pdf inspect", "pdf", "compare", "extract"],      anchor: "#apps" },
+    { name: "Revit Keys",       keywords: ["revit", "keys", "shortcuts", "keyboard", "poster"], anchor: "#apps" },
     { name: "P-DXF",            keywords: ["pdxf", "p-dxf", "dxf"],                          anchor: "#apps" },
     { name: "CSV Converter",    keywords: ["csv", "csv converter", "trimble", "leica"],      anchor: "#apps", showAll: true },
     { name: "Field Calculator", keywords: ["calculator", "calc", "feet inches"],             anchor: "#apps", showAll: true },
